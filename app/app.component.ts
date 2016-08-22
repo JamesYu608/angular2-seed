@@ -1,10 +1,16 @@
 import {Component} from 'angular2/core';
-import {CoursesComponent} from "./courses.component";
-import {AuthorsComponent} from "./authors.component";
 
 @Component({
     selector: 'my-app',
-    template: `<h1>Hello Angular</h1><courses></courses><authors></authors>`,
-    directives: [CoursesComponent, AuthorsComponent]
+    template: `
+        <input type="text" [value]="title" (input)="title = $event.target.value" />
+        <input type="text" [(ngModel)]="title" />
+        <input type="text" bindon-ngModel="title" />
+        <input type="button" (click)="title = ''" value="Clear" />
+        Preview: {{ title }}
+        `,
 })
-export class AppComponent { }
+
+export class AppComponent {
+    title = "Angular App";
+}
