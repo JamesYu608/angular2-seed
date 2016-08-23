@@ -1,22 +1,21 @@
 import {Component} from 'angular2/core';
-import {FavoriteComponent} from "./favorite.component";
+import {LikeComponent} from "./like.component";
 
 @Component({
     selector: 'my-app',
     template: `
-        <span class="glyphicon glyphicon-star"></span>
-        <favorite [is-favorite]="post.isFavorite" (change)="onFavoriteChange($event)"></favorite>
+        <like [is-like]="post.isLike" [total-like]="post.totalLike" (change)="onLikeChange($event)"></like>
     `,
-    directives: [FavoriteComponent]
+    directives: [LikeComponent]
 })
 
 export class AppComponent {
     post = {
-        title: "Title",
-        isFavorite: true
+        isLike: false,
+        totalLike: 10
     };
 
-    onFavoriteChange($event) {
+    onLikeChange($event) {
         console.log($event);
-    };
+    }
 }
