@@ -1,4 +1,4 @@
-System.register(['angular2/core', "./voter.component"], function(exports_1, context_1) {
+System.register(['angular2/core'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,32 +10,33 @@ System.register(['angular2/core', "./voter.component"], function(exports_1, cont
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, voter_component_1;
-    var AppComponent;
+    var core_1;
+    var VoterComponent;
     return {
         setters:[
             function (core_1_1) {
                 core_1 = core_1_1;
-            },
-            function (voter_component_1_1) {
-                voter_component_1 = voter_component_1_1;
             }],
         execute: function() {
-            AppComponent = (function () {
-                function AppComponent() {
+            VoterComponent = (function () {
+                function VoterComponent() {
+                    this.voteCount = 15;
                 }
-                AppComponent = __decorate([
+                __decorate([
+                    core_1.Input('vote-count'), 
+                    __metadata('design:type', Object)
+                ], VoterComponent.prototype, "voteCount", void 0);
+                VoterComponent = __decorate([
                     core_1.Component({
-                        selector: 'my-app',
-                        template: "\n        <voter></voter>\n    ",
-                        directives: [voter_component_1.VoterComponent]
+                        selector: 'voter',
+                        template: "\n        <div style=\"width: 20px;\">\n            <span class=\"glyphicon glyphicon-menu-up\"></span>\n            <span>{{ voteCount }}</span>\n            <span class=\"glyphicon glyphicon-menu-down\"></span>\n        </div>\n    "
                     }), 
                     __metadata('design:paramtypes', [])
-                ], AppComponent);
-                return AppComponent;
+                ], VoterComponent);
+                return VoterComponent;
             }());
-            exports_1("AppComponent", AppComponent);
+            exports_1("VoterComponent", VoterComponent);
         }
     }
 });
-//# sourceMappingURL=app.component.js.map
+//# sourceMappingURL=voter.component.js.map

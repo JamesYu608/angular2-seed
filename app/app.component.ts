@@ -1,21 +1,13 @@
 import {Component} from 'angular2/core';
-import {LikeComponent} from "./like.component";
+import {VoterComponent} from "./voter.component";
 
 @Component({
     selector: 'my-app',
     template: `
-        <like [is-like]="post.isLike" [total-like]="post.totalLike" (change)="onLikeChange($event)"></like>
+        <voter></voter>
     `,
-    directives: [LikeComponent]
+    directives: [VoterComponent]
 })
 
 export class AppComponent {
-    post = {
-        isLike: false,
-        totalLike: 10
-    };
-
-    onLikeChange($event) {
-        console.log($event);
-    }
 }
