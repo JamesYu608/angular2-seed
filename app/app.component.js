@@ -23,11 +23,19 @@ System.register(['angular2/core', "./favorite.component"], function(exports_1, c
         execute: function() {
             AppComponent = (function () {
                 function AppComponent() {
+                    this.post = {
+                        title: "Title",
+                        isFavorite: true
+                    };
                 }
+                AppComponent.prototype.onFavoriteChange = function ($event) {
+                    console.log($event);
+                };
+                ;
                 AppComponent = __decorate([
                     core_1.Component({
                         selector: 'my-app',
-                        template: "<favorite></favorite>",
+                        template: "\n        <span class=\"glyphicon glyphicon-star\"></span>\n        <favorite [is-favorite]=\"post.isFavorite\" (change)=\"onFavoriteChange($event)\"></favorite>\n    ",
                         directives: [favorite_component_1.FavoriteComponent]
                     }), 
                     __metadata('design:paramtypes', [])

@@ -1,4 +1,4 @@
-System.register(["angular2/src/core/metadata"], function(exports_1, context_1) {
+System.register(["angular2/core"], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,25 +10,36 @@ System.register(["angular2/src/core/metadata"], function(exports_1, context_1) {
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var metadata_1;
+    var core_1;
     var FavoriteComponent;
     return {
         setters:[
-            function (metadata_1_1) {
-                metadata_1 = metadata_1_1;
+            function (core_1_1) {
+                core_1 = core_1_1;
             }],
         execute: function() {
             FavoriteComponent = (function () {
                 function FavoriteComponent() {
                     this.isFavorite = false;
+                    this.change = new core_1.EventEmitter();
                 }
                 FavoriteComponent.prototype.onClick = function () {
                     this.isFavorite = !this.isFavorite;
+                    this.change.emit({ newValue: this.isFavorite });
                 };
+                __decorate([
+                    core_1.Input('is-favorite'), 
+                    __metadata('design:type', Object)
+                ], FavoriteComponent.prototype, "isFavorite", void 0);
+                __decorate([
+                    core_1.Output(), 
+                    __metadata('design:type', Object)
+                ], FavoriteComponent.prototype, "change", void 0);
                 FavoriteComponent = __decorate([
-                    metadata_1.Component({
+                    core_1.Component({
                         selector: 'favorite',
-                        template: "\n        <span\n            class=\"glyphicon\"\n            [class.glyphicon-star]=\"isFavorite\"\n            [class.glyphicon-star-empty]=\"!isFavorite\"\n            (click)=\"onClick()\">\n        </span>\n    "
+                        templateUrl: 'app/favorite.template.html',
+                        styles: ["\n        .glyphicon-star {\n            color: orange;\n        }\n    "]
                     }), 
                     __metadata('design:paramtypes', [])
                 ], FavoriteComponent);
